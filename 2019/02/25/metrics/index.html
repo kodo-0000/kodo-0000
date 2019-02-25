@@ -4,20 +4,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
   
-    <title>kodo</title>
+    <title>metrics | kodo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="lothar">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="kodo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="指标在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。 用什么的数据表示？用什么计算标准、计算方法的到这样的指标数据？今天就通过prometheus 对metrics抽象，了解一下。 prometheus metricsprometheus 是一款监控软件，目前在应用很广泛。prom">
+<meta name="keywords" content="prometheus,metrics,monitor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="metrics">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/metrics/index.html">
 <meta property="og:site_name" content="kodo">
+<meta property="og:description" content="指标在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。 用什么的数据表示？用什么计算标准、计算方法的到这样的指标数据？今天就通过prometheus 对metrics抽象，了解一下。 prometheus metricsprometheus 是一款监控软件，目前在应用很广泛。prom">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-25T10:26:26.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kodo">
+<meta name="twitter:title" content="metrics">
+<meta name="twitter:description" content="指标在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。 用什么的数据表示？用什么计算标准、计算方法的到这样的指标数据？今天就通过prometheus 对metrics抽象，了解一下。 prometheus metricsprometheus 是一款监控软件，目前在应用很广泛。prom">
 
     
     <link rel="alternative" href="/atom.xml" title="kodo" type="application/atom+xml">
@@ -75,12 +80,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2019/02/25/metrics/" title="metrics" itemprop="url">metrics</a>
@@ -94,9 +97,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h1 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h1><p>在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#指标"><span class="toc-number">1.</span> <span class="toc-text">指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#prometheus-metrics"><span class="toc-number">2.</span> <span class="toc-text">prometheus metrics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gauges"><span class="toc-number">2.1.</span> <span class="toc-text">Gauges</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counter"><span class="toc-number">2.2.</span> <span class="toc-text">Counter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Histogram"><span class="toc-number">2.3.</span> <span class="toc-text">Histogram</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.4.</span> <span class="toc-text">summary</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h1><p>在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。</p>
 <p>用什么的数据表示？用什么计算标准、计算方法的到这样的指标数据？今天就通过prometheus 对metrics抽象，了解一下。</p>
 <h1 id="prometheus-metrics"><a href="#prometheus-metrics" class="headerlink" title="prometheus metrics"></a>prometheus metrics</h1><p>prometheus 是一款监控软件，目前在应用很广泛。promethes监控中采集的数据都称为metrics。当我们访问prometheus获得监控数据，就要用到这些数据。</p>
 <h2 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h2><p>Gauges是一个单变量，表示一个瞬间的状态，如当前时刻电梯里的人数，5分钟钱电梯里的人数，当前时刻电梯所在的楼层，1分钟前电梯所在的楼层。</p>
@@ -104,14 +114,9 @@
 <h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>Counter 是计数器统计量，从0开始， 单调递增（在生产环境中，存在重置，重启等情况过，可能导致Counter置0，不满足单调递增）。<br>比如说这篇文章的访问数量量，只要有用户阅读就会增加，但是点赞数量就是Gauges统计量（有可能点完了反悔，撤销点赞）。</p>
 <h2 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h2><p>Histogram是稍微复杂一点的统计量，体现数据分布的情况。比如最大值，平均值，中位数，75百分位等等。Histogram主要用于表示一段时间范围内对数据进行采样（通常是请求持续时间或响应大小），并能够对其指定区间以及总数进行统计，通常它采集的数据展示为直方图。</p>
 <h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>Summary 和 Histogram 类似，主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -129,191 +134,45 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2019/02/25/metrics/" data-title="metrics | kodo" data-tsina class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/test-tc/" title="test_tc" itemprop="url">test_tc</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T06:33:49.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="0"><a href="#0" class="headerlink" title="0"></a>0</h1><pre><code>this is a test  for tags
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/itest/">itest</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/cpp/">cpp</a><a href="/tags/inf/">inf</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/02/25/test-tc/" title="test_tc">
+ <strong>下一篇：</strong><br> 
+ <span>test_tc
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/test/" title="test" itemprop="url">test</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T02:29:42.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="this-is-a-test-for-blog"><a href="#this-is-a-test-for-blog" class="headerlink" title="this is a test for blog"></a>this is a test for blog</h1>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
-
-</footer>
-
-
-    </article>
 
 
 
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/22/hello-world/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-22T08:13:56.992Z" itemprop="datePublished"> Published 2019-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#指标"><span class="toc-number">1.</span> <span class="toc-text">指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#prometheus-metrics"><span class="toc-number">2.</span> <span class="toc-text">prometheus metrics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gauges"><span class="toc-number">2.1.</span> <span class="toc-text">Gauges</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counter"><span class="toc-number">2.2.</span> <span class="toc-text">Counter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Histogram"><span class="toc-number">2.3.</span> <span class="toc-text">Histogram</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.4.</span> <span class="toc-text">summary</span></a></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -486,12 +345,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -564,4 +500,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
