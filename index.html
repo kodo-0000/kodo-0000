@@ -96,7 +96,56 @@
 </header>
     <div class="article-content">
         
-        <h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1>
+        <h1 id="master-cmake"><a href="#master-cmake" class="headerlink" title="master cmake"></a>master cmake</h1><h2 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h2><p>在linux环境下编写c/c++时，通常用make工具编译和链接工程，在独立环境和项目上使用makefile已经能很好的发挥作用，但在复杂的生产环境，运行环境下，make工具就有点难以招架了，make对环境的依赖很强，在不同的环境下，编译器不同等，都需要修改相应的的makefile，这意味着，一个工程要部署到复杂的环境下，对makefile的适配也是一项复杂的工程。在这样的背景下，cmake应运而生，cmake是一个比make更高级的构建工具，它可以根据不同的平台，不同的编译器，生成相应的makefile，达到一个编写一次，适配多套环境的效果。</p>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p>下面给展示一下cmake是如何构建一个工程。本着不能免俗的精神，我们以hello world入手。</p>
+<ul>
+<li>单文件编译入手</li>
+<li>外部构建，保持源码目录清洁</li>
+</ul>
+<h3 id="创建hello-world项目"><a href="#创建hello-world项目" class="headerlink" title="创建hello_world项目"></a>创建hello_world项目</h3><ul>
+<li>创建hello_world目录</li>
+<li>在工程内创建CmakeLists.txt</li>
+<li>在工程内创建src目录</li>
+<li><p>在src目录创建hello_world.cc</p>
+<pre><code>#include &lt;iostream&gt;
+
+int main()
+{
+
+  std::cout&lt;&lt;&quot;hello world&quot;&lt;&lt;std::endl;
+}
+</code></pre></li>
+<li><p>编写CMakeLists.txt</p>
+<pre><code>cmake_minimum_required(VERSION 2.8)
+
+project(HELLO CXX)
+
+message(STATUS &quot;hello world&quot;)
+
+add_executable(hello_world src/hello_world.cc)
+</code></pre></li>
+<li><p>执行编译</p>
+<pre><code>$cd hello_world
+$mkdir build
+$cmake ../
+$make
+$./bin/hello_world
+$hello_world
+</code></pre></li>
+</ul>
+<p>源码地址：<a href="https://github.com/kodo-0000/cmake-learning/tree/master/hello_world" target="_blank" rel="noopener">github</a></p>
+<p>至此，史上最简单的hello world的就编译完成。</p>
+<p>这个例子，会给人一种错觉，用make组织一个hello world要比cmake简单很多，cmake的好处在哪里。还要记很多cmake的命令，如cmake_minimum_required， add_executable等等。这里先卖个关子，请大家不要着急，后续的文章会通过一个大型的项目，逐步展开cmake使用的讲解，在生产环境中使用cmake解决开发，测试上的痛点以及提升工程效率。</p>
+<p>参考资料：</p>
+<ul>
+<li><p>[1]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/mastering-cmake.pdf" target="_blank" rel="noopener">mastering cmake</a></p>
+</li>
+<li><p>[2]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/cmake-rules.pdf" target="_blank" rel="noopener">cmake rules</a></p>
+</li>
+<li><p>[3]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/cmake-practice.pdf" target="_blank" rel="noopener">cmake practice</a></p>
+</li>
+</ul>
+
         
         
         <p class="article-more-link">
