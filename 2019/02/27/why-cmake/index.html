@@ -4,20 +4,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
   
-    <title>kodo</title>
+    <title>why cmake | kodo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="lothar">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="kodo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="why cmake如果你曾经维护过软件保的构建和部署过程，你将会对cmake产生兴趣。cmake是一个开源构建管理工具。他允许用户编写一个简单的txt，控制项目构建和部署。这个文件随后将用于生成集成开发环境在内的本地开发工具（例如Microsoft Visual Studio, Apple’s Xcode ,Unix Linux,Nmake,Borlandstyle Makefiles）的工程文">
+<meta name="keywords" content="productivity,develop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="why cmake">
+<meta property="og:url" content="http://yoursite.com/2019/02/27/why-cmake/index.html">
 <meta property="og:site_name" content="kodo">
+<meta property="og:description" content="why cmake如果你曾经维护过软件保的构建和部署过程，你将会对cmake产生兴趣。cmake是一个开源构建管理工具。他允许用户编写一个简单的txt，控制项目构建和部署。这个文件随后将用于生成集成开发环境在内的本地开发工具（例如Microsoft Visual Studio, Apple’s Xcode ,Unix Linux,Nmake,Borlandstyle Makefiles）的工程文">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-26T17:31:31.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kodo">
+<meta name="twitter:title" content="why cmake">
+<meta name="twitter:description" content="why cmake如果你曾经维护过软件保的构建和部署过程，你将会对cmake产生兴趣。cmake是一个开源构建管理工具。他允许用户编写一个简单的txt，控制项目构建和部署。这个文件随后将用于生成集成开发环境在内的本地开发工具（例如Microsoft Visual Studio, Apple’s Xcode ,Unix Linux,Nmake,Borlandstyle Makefiles）的工程文">
 
     
     <link rel="alternative" href="/atom.xml" title="kodo" type="application/atom+xml">
@@ -75,12 +80,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2019/02/27/why-cmake/" title="why cmake" itemprop="url">why cmake</a>
@@ -94,9 +97,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h1 id="why-cmake"><a href="#why-cmake" class="headerlink" title="why cmake"></a>why cmake</h1><p>如果你曾经维护过软件保的构建和部署过程，你将会对cmake产生兴趣。cmake是一个开源构建管理工具。他允许用户编写一个简单的txt，控制项目构建和部署。这个文件随后将用于生成集成开发环境在内的本地开发工具（例如Microsoft Visual Studio, Apple’s Xcode ,Unix Linux,Nmake,Borlandstyle Makefiles）的工程文件。cmake允许用户通过简单的裁剪构建出复杂的硬件和软件系统，解决了软件构件中多个方面的难题，例如跨平台构建，系统检测以及用户自定义构建。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#why-cmake"><span class="toc-number">1.</span> <span class="toc-text">why cmake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-CMake的历史"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 CMake的历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-为什么不使用Autoconf"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 为什么不使用Autoconf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-为什么不采用JAM-qmake-Scons-或者ANT"><span class="toc-number">1.3.</span> <span class="toc-text">1.3  为什么不采用JAM, qmake,Scons,或者ANT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-为什么不自己使用脚本"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 为什么不自己使用脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-CMake支持哪些平台"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 CMake支持哪些平台</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="why-cmake"><a href="#why-cmake" class="headerlink" title="why cmake"></a>why cmake</h1><p>如果你曾经维护过软件保的构建和部署过程，你将会对cmake产生兴趣。cmake是一个开源构建管理工具。他允许用户编写一个简单的txt，控制项目构建和部署。这个文件随后将用于生成集成开发环境在内的本地开发工具（例如Microsoft Visual Studio, Apple’s Xcode ,Unix Linux,Nmake,Borlandstyle Makefiles）的工程文件。cmake允许用户通过简单的裁剪构建出复杂的硬件和软件系统，解决了软件构件中多个方面的难题，例如跨平台构建，系统检测以及用户自定义构建。</p>
 <p> 对于很多项目工程来说，尤其是跨平台的工程，有一个统一的构建系统尤为重要。现在很多工程既要用于Unix Makefile（or Makefile.in）也要用 Microsoft Visual Studio的工作空间。</p>
 <p> 这就要求开发者不断的更新两个不同的构建系统，使他们相互保持一致。为了一些额外的构建系统例如Borland或者甚至要求更多这些文件的自定义副本的Xcode，以至于衍生出一个更大的问题。如果你想要支持一些可选的组建（例如当系统支持libjpeg时工程中要增加jpeg支持），这个问题将变得异常复杂。CMake 通过将这些不同的操作合并到一个简单易用的文本格式文件中，来解决这些难题。</p>
 <p>如果你存在多个开发者在使用同一个工程或者一个工程拥有多个目标平台的情况，并且这个软件将不得不在不止一台电脑上构建。给一台现代计算机在安装软件和自定义选项时一个宽泛的选择范围，即时两台同样操作系统的计算机也会有细微不同的概率。CMake 具备很多用于解决单平台多机器开发环境问题的功能：</p>
@@ -137,14 +147,9 @@
 <h2 id="1-4-为什么不自己使用脚本"><a href="#1-4-为什么不自己使用脚本" class="headerlink" title="1.4 为什么不自己使用脚本"></a>1.4 为什么不自己使用脚本</h2><p>有一些工程使用了一些已经存在的脚本语言例如Perl或者 Python 来配置构建过程。尽管用这些类似的系统能够实现一些相似的功能，相对于一个简单易用的构建系统，使用这些工具会比寻找一个复活节彩蛋更麻烦。当构建你的软件时，你甚至都还没有开始进入构建过程，用户被强制要求找到并安装，4.3.2版本的这个工具以及3.2.4版本的其他工具。为了避免这些问题，这就要求CMake构建时除了这个软件本身要用到的一些工具不再需要其他的任何工具。使用Cmake一个最低限制是一个c编译器，以及编译器的原生构建工具和一个CMake的可执行文件。CMake是用C++编写的，仅仅要求必须有一个c++的编译器来构建CMake本身，并且在大部分系统中已经有已经编译好的可执行文件可以直接用。如果你自己用脚本来实现，意味着不能生成本地的Xcode或者Visual Studio的工作空间，使得在Mac或者Windows上构建受限。</p>
 <h2 id="1-5-CMake支持哪些平台"><a href="#1-5-CMake支持哪些平台" class="headerlink" title="1.5 CMake支持哪些平台"></a>1.5 CMake支持哪些平台</h2><p>CMake能够在非常的平台上运行包括微软的Windows，苹果的Mac OS X以及绝大多数的UNIX以及类UNIX的平台。在编者写这本书的时候CMake已经在以下平台长期测试过：Windows 98/2000/XP/Vista/7,AIX,HPUX,IRIX,Linux,Mac OS X,Solaris,OSF,QNX,CYGWIN,MinGW以及FreeBSD。你能够从<a href="http://www.cmake.org这个网站得到一个已测试平台的列表。" target="_blank" rel="noopener">www.cmake.org这个网站得到一个已测试平台的列表。</a></p>
 <p>同样，CMake支持绝大部分常规编译器。它支持GNU编译器在所有CMake支持的平台上。其他已测试过的编译器包括Visual Studio 6到10，Intel C，SGI CC，Mips Pro，Borland，Sun CC 以及HP aCC。CMake 也能够在列表之外的绝大多数Unix风格的编译器上使用。如果编译器用一个奇怪的方式传递这些参数，你可以查看在第241的“将CMake 移植到新编译器”的章节中的信息，来确定怎样自定义设置一个新的编译器。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -162,426 +167,45 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2019/02/27/why-cmake/" data-title="why cmake | kodo" data-tsina class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/26/master-cmake/" title="master cmake" itemprop="url">master cmake</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T16:00:01.000Z" itemprop="datePublished"> Published 2019-02-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="master-cmake"><a href="#master-cmake" class="headerlink" title="master cmake"></a>master cmake</h1><h2 id="preface"><a href="#preface" class="headerlink" title="preface"></a>preface</h2><p>在linux环境下编写c/c++时，通常用make工具编译和链接工程，在独立环境和项目上使用makefile已经能很好的发挥作用，但在复杂的生产环境，运行环境下，make工具就有点难以招架了，make对环境的依赖很强，在不同的环境下，编译器不同等，都需要修改相应的的makefile，这意味着，一个工程要部署到复杂的环境下，对makefile的适配也是一项复杂的工程。在这样的背景下，cmake应运而生，cmake是一个比make更高级的构建工具，它可以根据不同的平台，不同的编译器，生成相应的makefile，达到一个编写一次，适配多套环境的效果。</p>
-<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p>下面给展示一下cmake是如何构建一个工程。本着不能免俗的精神，我们以hello world入手。</p>
-<ul>
-<li>单文件编译入手</li>
-<li>外部构建，保持源码目录清洁</li>
-</ul>
-<h3 id="创建hello-world项目"><a href="#创建hello-world项目" class="headerlink" title="创建hello_world项目"></a>创建hello_world项目</h3><ul>
-<li>创建hello_world目录</li>
-<li>在工程内创建CmakeLists.txt</li>
-<li>在工程内创建src目录</li>
-<li><p>在src目录创建hello_world.cc</p>
-<pre><code>#include &lt;iostream&gt;
-
-int main()
-{
-
-  std::cout&lt;&lt;&quot;hello world&quot;&lt;&lt;std::endl;
-}
-</code></pre></li>
-<li><p>编写CMakeLists.txt</p>
-<pre><code>cmake_minimum_required(VERSION 2.8)
-
-project(HELLO CXX)
-
-message(STATUS &quot;hello world&quot;)
-
-add_executable(hello_world src/hello_world.cc)
-</code></pre></li>
-<li><p>执行编译</p>
-<pre><code>$cd hello_world
-$mkdir build
-$cmake ../
-$make
-$./bin/hello_world
-$hello_world
-</code></pre></li>
-</ul>
-<p>源码地址：<a href="https://github.com/kodo-0000/cmake-learning/tree/master/hello_world" target="_blank" rel="noopener">github</a></p>
-<p>至此，史上最简单的hello world的就编译完成。</p>
-<p>这个例子，会给人一种错觉，用make组织一个hello world要比cmake简单很多，cmake的好处在哪里。还要记很多cmake的命令，如cmake_minimum_required， add_executable等等。这里先卖个关子，请大家不要着急，后续的文章会通过一个大型的项目，逐步展开cmake使用的讲解，在生产环境中使用cmake解决开发，测试上的痛点以及提升工程效率。</p>
-<p>参考资料：</p>
-<ul>
-<li><p>[1]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/mastering-cmake.pdf" target="_blank" rel="noopener">mastering cmake</a></p>
-</li>
-<li><p>[2]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/cmake-rules.pdf" target="_blank" rel="noopener">cmake rules</a></p>
-</li>
-<li><p>[3]: <a href="https://github.com/kodo-0000/cmake-learning/blob/master/docs/cmake-practice.pdf" target="_blank" rel="noopener">cmake practice</a></p>
-</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/productivity/">productivity</a>►<a class="article-category-link" href="/categories/productivity/cmake/">cmake</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/productivity/">productivity</a><a href="/tags/develop/">develop</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/02/26/master-cmake/" title="master cmake">
+ <strong>下一篇：</strong><br> 
+ <span>master cmake
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/productivity/" title="productivity" itemprop="url">productivity</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T15:57:34.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="productivity"><a href="#productivity" class="headerlink" title="productivity"></a>productivity</h1><h1 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h1><p>cmake 适用介绍<br><a href="https://kodo-0000.github.io/2019/02/26/master-cmake" target="_blank" rel="noopener">https://kodo-0000.github.io/2019/02/26/master-cmake</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/productivity/">productivity</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/productivity/">productivity</a><a href="/tags/develop/">develop</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
 
-</footer>
 
 
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/metrics/" title="metrics" itemprop="url">metrics</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T10:25:44.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h1><p>在日常工作工作中，经常听到某某指标很好，达到预期，某某指标基本符合预期，需要提升等说法。指标实际实际上就是一种数据，通过数据衡量目标是否达到预期的指数，规格，标准等。</p>
-<p>用什么的数据表示？用什么计算标准、计算方法的到这样的指标数据？今天就通过prometheus 对metrics抽象，了解一下。</p>
-<h1 id="prometheus-metrics"><a href="#prometheus-metrics" class="headerlink" title="prometheus metrics"></a>prometheus metrics</h1><p>prometheus 是一款监控软件，目前在应用很广泛。promethes监控中采集的数据都称为metrics。当我们访问prometheus获得监控数据，就要用到这些数据。</p>
-<h2 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h2><p>Gauges是一个单变量，表示一个瞬间的状态，如当前时刻电梯里的人数，5分钟钱电梯里的人数，当前时刻电梯所在的楼层，1分钟前电梯所在的楼层。</p>
-<p>Gauges是统计量是无明显规律的变化量，只表示瞬间的状态。</p>
-<h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>Counter 是计数器统计量，从0开始， 单调递增（在生产环境中，存在重置，重启等情况过，可能导致Counter置0，不满足单调递增）。<br>比如说这篇文章的访问数量量，只要有用户阅读就会增加，但是点赞数量就是Gauges统计量（有可能点完了反悔，撤销点赞）。</p>
-<h2 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h2><p>Histogram是稍微复杂一点的统计量，体现数据分布的情况。比如最大值，平均值，中位数，75百分位等等。Histogram主要用于表示一段时间范围内对数据进行采样（通常是请求持续时间或响应大小），并能够对其指定区间以及总数进行统计，通常它采集的数据展示为直方图。</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>Summary 和 Histogram 类似，主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/metric/">metric</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/prometheus/">prometheus</a><a href="/tags/metrics/">metrics</a><a href="/tags/monitor/">monitor</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/test-tc/" title="test_tc" itemprop="url">test_tc</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T06:33:49.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="0"><a href="#0" class="headerlink" title="0"></a>0</h1><pre><code>this is a test  for tags
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/itest/">itest</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/cpp/">cpp</a><a href="/tags/inf/">inf</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/25/test/" title="test" itemprop="url">test</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-25T02:29:42.000Z" itemprop="datePublished"> Published 2019-02-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="this-is-a-test-for-blog"><a href="#this-is-a-test-for-blog" class="headerlink" title="this is a test for blog"></a>this is a test for blog</h1>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/02/22/hello-world/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-02-22T08:13:56.992Z" itemprop="datePublished"> Published 2019-02-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#why-cmake"><span class="toc-number">1.</span> <span class="toc-text">why cmake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-CMake的历史"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 CMake的历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-为什么不使用Autoconf"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 为什么不使用Autoconf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-为什么不采用JAM-qmake-Scons-或者ANT"><span class="toc-number">1.3.</span> <span class="toc-text">1.3  为什么不采用JAM, qmake,Scons,或者ANT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-为什么不自己使用脚本"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 为什么不自己使用脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-CMake支持哪些平台"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 CMake支持哪些平台</span></a></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -750,12 +374,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -828,4 +529,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
