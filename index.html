@@ -83,6 +83,136 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/03/01/python-操作github-（一）/" title="python 操作github （一）" itemprop="url">python 操作github （一）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lothar" target="_blank" itemprop="author">lothar</a>
+		
+  </p><p class="article-time">
+    <time datetime="2019-02-28T16:01:43.000Z" itemprop="datePublished"> Published 2019-03-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="python-操作-github-（一）"><a href="#python-操作-github-（一）" class="headerlink" title="python 操作 github （一）"></a>python 操作 github （一）</h1><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>最近在组织一些项目，由于项目是c++的项目，在实施过程中。在项目过程中，一直比较关注工程效率。希望能通过一类方式方法有效组织工程，打通开发、自动化测试、白盒测试、运维部署整套流程。先抛开整个流程，今天只聊聊c++的包管理一个子问题。</p>
+<p>众多高级语言，很多语言都有自己成熟的包管理体系，有虚拟机的语言相对来说生存环境要好很多。</p>
+<ul>
+<li>java     maven</li>
+<li>pyton    pip</li>
+<li>node.js  npm</li>
+</ul>
+<p>小清新go，rust都有自己的包管理工具。从语言开发已经设计好了包的管理方式。</p>
+<p>c++不缺少包管理工具，yum、cmake、scon，biicode等开源工具。强大的功能和较强的易用性，促使cmake开源项目，甚至公司内部项目得到广泛使用。在开源场景下，cmake展现强大的生命力。但也有一个致命的问题，在开源上使用，某天想尝试一下xxxxx项目，在物理环境中折腾半天，可能还是编译不过去，更别提部署了。大多数开源项目的cmake写的都相对复杂，我自认为对cmake使用还算熟悉，经常有的cmake文件，动辄几百行，上千行，cmake也有版本差异，需要花费大量的调整。最终即使不成，大不了不用了，用其他的替代。在生产环境下就不同了，功能需求必须要使用，软件需要兼容生产环境，而不是开源的项目，在允许的情况下，让生产环境兼容项目。</p>
+<p>经过种种的选型，默默的定下了一个小目标</p>
+<p><strong>1个小时能够完全掌握如何会用</strong>。</p>
+<p>虽然是个小目标，还是要想清楚怎么做的，这个小工具能带来什么。是个什么样子。</p>
+<h2 id="需求与设计"><a href="#需求与设计" class="headerlink" title="需求与设计"></a>需求与设计</h2><p><strong>需要解决的问题</strong></p>
+<ol>
+<li>不同操作系统，不同编译器和芯片架构</li>
+<li>不同构建系统</li>
+<li>不同依赖方法</li>
+<li>可编程（用程序的方式修改编译）</li>
+</ol>
+<p><strong>我们能得到什么收益</strong></p>
+<ol>
+<li>统一风格与规范，依赖管理变得更简单</li>
+<li>方便团队项目组织，减少沟通成本</li>
+<li>降低不同环境编译依赖的复杂度</li>
+<li>结合git，svn等版本管理工具，保持版本管理的一致性</li>
+<li>减少人工介入，减少误操作的风险</li>
+<li><strong>提高开发效率以及迭代效率</strong></li>
+</ol>
+<h3 id="最终的产出形态"><a href="#最终的产出形态" class="headerlink" title="最终的产出形态"></a>最终的产出形态</h3><p>在思考产品形态的时候，始终出于一个观点：</p>
+<p><strong>我们做的任何工具或者指定的规范，是为使用者提供效率和方便，不能让他成为一种负担</strong></p>
+<p>最终我希望能是这个样子，一个命令，我想叫他glue，一个配置文件。这样足够了。</p>
+<p>构建操作是这样</p>
+<pre><code>$glue build .
+$success! glue build complete
+</code></pre><p>配置文件是这样子</p>
+<pre><code>project: hello
+  lang: c++
+    - compiler
+      - gcc
+        - version: 4.8
+      - clang 
+        - version:3.3
+    - deps
+      - boost
+        - path: https://github.com/boost
+        - branch: master
+          - tag: v1.59  
+   install:
+     bin:
+     lib:
+     include:
+
+    -package:
+        type: rpm
+        release type: debuginfo
+</code></pre><p>上面示意了项目的使用方式。glue的定位为配合cmake，make等工具管理依赖构建项目的工具.</p>
+<h2 id="python-与-git"><a href="#python-与-git" class="headerlink" title="python 与 git"></a>python 与 git</h2><p>这里为什么选择用python？而不是在cmake基础上增加新的功能？ 实际上，虽然这个项目的定位是包依赖管理的工具，也是出于工程效率和开发规范的考虑。结合git的工作流工具，代码审核工具，使用python实现比较轻量级，可复用的工具也比较多。曾经读过左耳耗子的一篇文章，文章讲述的是工作流问题。实际在代码的服务端，很多大厂已经为自己公司量身定做了各种效率平台。在客户端目前还是一块空白。glue在这方面也会做一些事情。结合当前的需求和将来理想，最终，敲定是用python来做这个项目。</p>
+<p>在后面的文章中会详细介绍项目的设计方案和使用细节。今天最主要是的目的是解决通过python操作git的小小目标。</p>
+<h2 id="gitpython"><a href="#gitpython" class="headerlink" title="gitpython"></a>gitpython</h2><p>GitPython 是一个用于操作 Git 版本库的 python 包。它提供了一系列的对象模型(库 - Repo、树 - Tree、提交 - Commit等)，用于操作版本库中的相应对象。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>首先安装python，版本需要再2.7-3.4之间，并安装pip,然后通过通过pip安装gitpython库。<br>详细的过程官网上有详细的说明：<a href="https://gitpython.readthedocs.io/en/stable/intro.html" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>创建first.py</li>
+<li><p>编辑文件</p>
+<pre><code>from git import Repo
+r = Repo.clone_from(&quot;https://github.com/gottingen/kob.git&quot;, &quot;kob&quot;)
+</code></pre></li>
+<li>运行 first.py</li>
+</ol>
+<p>是否目录下多了一个kob目录，github工程已经拿下。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>下一篇结合业务上的痛点，介绍设计和glue功能。</p>
+<p>参考资料：<br>【1】: <a href="https://github.com/baidu/broc" target="_blank" rel="noopener">broc</a><br>【2】： <a href="https://github.com/chen3feng/typhoon-blade" target="_blank" rel="noopener">blade</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/productivity/">productivity</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python/">python</a><a href="/tags/git/">git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/02/27/start/" title="start" itemprop="url">start</a>
   </h1>
   <p class="article-author">By
@@ -98,7 +228,7 @@
         
         <h1 id="start"><a href="#start" class="headerlink" title="start"></a>start</h1><h2 id="install-cmake"><a href="#install-cmake" class="headerlink" title="install cmake"></a>install cmake</h2><p>在使用CMake之前，您需要在您的系统上安装或构建CMake二进制安装文件。 在许多系统中，您可能会发现CMake已经安装，或者可以使用系统的标准软件包管理工具进行安装。 Cygwin，Debian，FreeBSD，Mac OS X Fink等等都有CMake发行版。 如果您的系统没有CMake包，您可以在<a href="http://www.cmake.org上找到针对大多数常见体系结构CMake预编译。" target="_blank" rel="noopener">www.cmake.org上找到针对大多数常见体系结构CMake预编译。</a> 如果您没有为您的系统预编译找到二进制文件，那么您可以从源代码构建CMake。 要构建CMake，您需要一个c++编译器。</p>
 <p><em>UNIX和Mac的安装</em></p>
-<p>如果你的系统提供CMake安装包作为其标准软件包之一，请按照系统的软件包安装说明进行安装。 如果你的系统没有CMake安装包，或者有一个过时的CMake版本，你可以从 <a href="www.cmake.org">www.cmake.org</a> 下载预编译的二进制文件。这个二进制文件是tar格式。 tar文件包含一个README文件和一个封闭的tar文件。 README文件包含封装的tar文件中包含的文件清单以及一些说明。安装只需将附带的tar文件解压到目标目录（通常是/usr/local）。 但是，它可以是任何目录，并且不需要root权限来进行安装。</p>
+<p>如果你的系统提供CMake安装包作为其标准软件包之一，请按照系统的软件包安装说明进行安装。 如果你的系统没有CMake安装包，或者有一个过时的CMake版本，你可以从 <a href="http://www.cmake.org">www.cmake.org</a> 下载预编译的二进制文件。这个二进制文件是tar格式。 tar文件包含一个README文件和一个封闭的tar文件。 README文件包含封装的tar文件中包含的文件清单以及一些说明。安装只需将附带的tar文件解压到目标目录（通常是/usr/local）。 但是，它可以是任何目录，并且不需要root权限来进行安装。</p>
 <p>Windows二进制安装</p>
 <p>CMake有一个NullSoft安装文件可以从<a href="www.cmake.org">www.cmake.org</a>下载。 要安装此文件，只需在要运行CMake的Windows计算机上运行可执行文件即可。 安装后，您将能够从开始菜单运行CMake。</p>
 <h2 id="自己建立CMake"><a href="#自己建立CMake" class="headerlink" title="自己建立CMake"></a>自己建立CMake</h2><p>如果您的系统不能使用二进制文件，或者如果二进制文件不是你希望使用的CMake版本，则可以从源代码构建CMake。 您可以按照<a href="[www.cmake.org](www.cmake.org">www.cmake.org</a>)上的说明获取CMake源代码。 一旦你有源代码，它可以用两种不同的方式建立。 如果您的系统上有一个CMake版本，则可以使用它来构建其他版本的CMake。 一般来说，CMake的当前开发版本总是可以从以前的CMake版本开始构建。 这是在大多数Windows系统上如何构建新版本的CMake。 构建CMake的第二种方法是运行其构建脚本。你需要改变目录到你的CMake源代码目录并输入</p>
@@ -673,7 +803,7 @@ $hello_world
   
 	<div class="category-block">
 		<h3 class="asidetitle">Categories</h3>
-			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/itest/">itest</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/metric/">metric</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/productivity/">productivity</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/productivity/cmake/">cmake</a><span class="category-list-count">3</span></li></ul></li></ul>
+			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/itest/">itest</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/metric/">metric</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/productivity/">productivity</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/productivity/cmake/">cmake</a><span class="category-list-count">3</span></li></ul></li></ul>
 	</div>
 	
 
@@ -691,14 +821,6 @@ $hello_world
 			
 		
 			
-				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/inf/" title="inf">inf<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/prometheus/" title="prometheus">prometheus<sup>1</sup></a></li>
 			
 		
@@ -708,6 +830,22 @@ $hello_world
 		
 			
 				<li><a href="/tags/monitor/" title="monitor">monitor<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/inf/" title="inf">inf<sup>1</sup></a></li>
 			
 		
 		</ul>
